@@ -1,30 +1,33 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import MainNavigator from "./navigation/MainNavigator";
-import { createStore, combineReducers } from "redux";
-import { Provider} from 'react-redux'
+import { View, StyleSheet } from "react-native";
+import SplashScreen from "./src/screens/SplashScreen";
+import CountryListing from "./src/screens/CountryListing";
 
-const rootReducer = combineReducers({
-  covid: covidReducer,
-});
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-const store = createStore(rootReducer);
+const Stack = createStackNavigator();
+
+
 
 export default function App() {
   return (
-    <Provider store={store}>
-      <MainNavigator />
-      <StatusBar style="auto" />
-    </Provider>
+    <View style={styles.Container}>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="SplashScreen"
+          screenOptions={{ headerShown: false }}
+        >
+          <Stack.Screen name="SplashScreen" component={SplashScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  Container: {
+    display: "flex",
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
