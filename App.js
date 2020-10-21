@@ -1,7 +1,8 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import SplashScreen from "./src/screens/SplashScreen";
-import CountryListing from "./src/screens/CountryListing";
+import Detail from "./src/screens/Detail";
+import { StatusBar } from "expo-status-bar";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -19,8 +20,10 @@ export default function App() {
           screenOptions={{ headerShown: false }}
         >
           <Stack.Screen name="SplashScreen" component={SplashScreen} />
+          <Stack.Screen name="Detail" component={Detail} />
         </Stack.Navigator>
       </NavigationContainer>
+      <StatusBar style="light" />
     </View>
   );
 }

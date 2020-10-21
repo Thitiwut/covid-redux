@@ -22,11 +22,16 @@ const CountryListing = ({ handleCountryChange }) => {
     <View style={styles.container}>
       <Picker
         selectedValue={selectedValue}
-        style={{ height: 50, width: 200 }}
+        style={{ height: 50, width: 200 ,paddingTop:30}}
         onValueChange={(itemValue) => countryChangeHandler(itemValue)}
+        itemStyle={{
+          backgroundColor: "grey",
+          color: "black",
+          fontSize: 17,
+        }}
       >
-        {countries.map((item,key) => (
-          <Picker.Item key={key} label={item.Country} value={item.Country} />
+        {countries.map((item, key) => (
+          <Picker.Item key={key} label={item.Country} value={item.Country} color="white" />
         ))}
       </Picker>
     </View>
@@ -34,7 +39,11 @@ const CountryListing = ({ handleCountryChange }) => {
 };
 
 export const styles = StyleSheet.create({
- 
+  container: {
+    borderWidth: 1,
+    borderColor: "white",
+    borderRadius: 4
+  },
 });
 
 export default CountryListing;
